@@ -11,8 +11,7 @@ let actual_player;
 let player_cards = [];
 let computer_cards = [];
 
-const player_name = "Mohamed";
-// prompt("Bienvenue dans le jeu du Blackjack ! Quel est votre nom?")
+const player_name = prompt("Bienvenue dans le jeu du Blackjack ! Quel est votre nom?")
 
 const startGame = () => {
     actual_player = player_name;
@@ -35,8 +34,9 @@ const startGame = () => {
             player_want_to_pick = confirm(`Voulez vous piocher une carte ?`);
             if(player_want_to_pick) {
                 player_cards.push(pickCard());
+                showGameStatus()
             }
-        } while(player_want_to_pick)
+        } while(player_want_to_pick === true)
         
         while(getSumOfCards(computer_cards) <= 17 && getSumOfCards(computer_cards) < getSumOfCards(player_cards)) {
             computer_cards.push(pickCard());
@@ -50,6 +50,13 @@ const startGame = () => {
             winner = player_name;
             showGameStatus();
             log(`La partie a été remportée par ${winner}`);
+        }else if(getSumOfCards(player_cards) < getSumOfCards(computer_cards)){
+            game_is_end = true;
+            winner = computer_name;
+            showGameStatus();
+            log(`La partie a été remportée par ${winner}`);
+        }else {
+            game_is_end = true;
         }
 }
 
