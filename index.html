@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BlackJack</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
-    <h1>Bienvenue dans le jeu du BlackJack</h1>
+    <div class="container">
+        <h1>Bienvenue au Blackjack !</h1>
+        <p>Préparez-vous à apprécier le jeu de cartes classique du Blackjack. Les règles sont simples, et l'excitation est infinie.</p>
 
-    <p>Pour jouer au jeu il vous suffit de lancer votre console</p>
+        <div class="rules">
+            <h2>Règles du jeu :</h2>
+            <ul>
+                <li>Le joueur et le croupier reçoivent deux cartes chacun.</li>
+                <li>L'objectif est d'obtenir une main dont la valeur est aussi proche que possible de 21 sans la dépasser.</li>
+                <li>Les cartes numériques ont la valeur de leur numéro, les cartes à figures (Rois, Reines, Valets) valent 10, et les As peuvent valoir 1 ou 11, selon ce qui est le mieux pour la main.</li>
+                <li>Si la main d'un joueur dépasse 21, il perd la partie.</li>
+                <li>Si la main d'un joueur est exactement de 21, et que la main du croupier ne l'est pas, le joueur gagne. Si les deux ont 21, c'est une égalité.</li>
+                <li>Le croupier doit tirer des cartes jusqu'à ce que sa main atteigne au moins 17.</li>
+                <li>Si la main du croupier dépasse 21, le joueur gagne.</li>
+                <li>Si la main du croupier est plus proche de 21 que celle du joueur sans la dépasser, le croupier gagne.</li>
+            </ul>
+        </div>
+    </div>
 
 
     <script src="./main.js"></script>
