@@ -6,7 +6,7 @@ let card_list = [
 ];
 
 let winner = "";
-let game_is_running = true;
+let game_is_running = false;
 let actual_player;
 let player_cards = [];
 let computer_cards = [];
@@ -14,7 +14,8 @@ let computer_cards = [];
 let player_name;
 
 const startGame = () => {
-    prompt("Bienvenue dans le jeu du Blackjack ! Quel est votre nom?");
+    player_name = prompt("Bienvenue dans le jeu du Blackjack ! Quel est votre nom?");
+    game_is_running = true;
     actual_player = player_name;
     // Première distribution de cartes
     player_cards.push(pickCard());
@@ -132,5 +133,9 @@ distribue les cartes initiales au joueur et au croupier, puis continue avec la l
 const play_button = document.getElementById('play-button');
 
 play_button.addEventListener('click', () => {
-    startGame();
+    if(!game_is_running){
+        startGame();
+    }else{
+        location.reload();
+    }
 });
