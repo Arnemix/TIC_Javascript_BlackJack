@@ -20,12 +20,12 @@ const startGame = () => {
     player_cards.push(pickCard());
     computer_cards.push(pickCard());
     //---- Début du de la partie ----//
-    log(`La partie commence ! 🃏`);
-    log(`👀 Voici votre main de départ : ${player_cards}`);
-    log(`Total de cartes : ${getSumOfCards(player_cards)}`);
+    log("🎉 La partie de Blackjack commence ! 🎉");
+    log(`👀 ${player_name}, voici vos cartes de départ : ${player_cards.join(', ')}`);
+    log(`💡 Total de vos cartes : ${getSumOfCards(player_cards)}`);
     log('\n');
-    log(`👀 Voici la première carte du croupier : ${computer_cards[0]}`);
-    log(`Total des cartes du croupier : ${getSumOfCards(computer_cards)}`);
+    log(`👀 La première carte du croupier : ${computer_cards[0]}`);
+    log(`💡 Total des cartes du croupier : ${getSumOfCards([computer_cards[0]])}`);
     while (game_is_running) {
         if (getSumOfCards(player_cards) > 21) {
             winner = "croupier";
@@ -45,8 +45,9 @@ const startGame = () => {
         while (player_want_to_pick != "non") {
             player_want_to_pick = prompt(`Voulez-vous piocher une carte?`).toLowerCase();
             if (player_want_to_pick == "oui") {
-                player_cards.push(pickCard());
-                log(`🎲 Vous avez pioché : ${player_cards[player_cards.length - 1]}`);
+                let newCard = pickCard();
+                player_cards.push(newCard);
+                log(`🎲 Vous avez pioché : ${newCard}`);
                 showGameStatus();
                 if (getSumOfCards(player_cards) > 21) {
                     winner = "croupier";
@@ -61,8 +62,9 @@ const startGame = () => {
             showWinMessage();
         } else if (getSumOfCards(player_cards) < 21) {
             while (getSumOfCards(computer_cards) <= 17 && getSumOfCards(computer_cards) <= getSumOfCards(player_cards)) {
-                computer_cards.push(pickCard());
-                log(`Le croupier a pioché une carte : ${computer_cards[computer_cards.length - 1]}`);
+                let newCard = pickCard();
+                computer_cards.push(newCard);
+                log(`🎲 Le croupier a pioché une carte : ${newCard}`);
                 showGameStatus();
                 if (getSumOfCards(computer_cards) >= 17 && getSumOfCards(computer_cards) <= getSumOfCards(player_cards)) {
                     break;
@@ -92,16 +94,16 @@ const getSumOfCards = (cards) => {
 };
 
 const showWinMessage = () => {
-    log(`----------------------------------`);
+    log("🏆 Résultat de la partie :");
     game_is_running = false;
     if (winner === "égalité") {
-        log(`C'est une égalité !`);
+        log("C'est une égalité ! 😅");
     } else {
-        log(`Le joueur ${winner} a gagné! Victoire du joueur!`);
+        log(`👑 Le joueur ${winner} remporte la victoire ! 🎉`);
     }
-    log(`Votre main : ${player_cards} (${getSumOfCards(player_cards)})`);
-    log(`La main du croupier : ${computer_cards} (${getSumOfCards(computer_cards)})`);
-    log(`----------------------------------`);
+    log(`💡 Vos cartes : ${player_cards.join(', ')} (${getSumOfCards(player_cards)})`);
+    log(`💡 Cartes du croupier : ${computer_cards.join(', ')} (${getSumOfCards(computer_cards)})`);
+    log("🎉 Fin de la partie de Blackjack. Merci d'avoir joué !");
 };
 
 const log = (message) => {
@@ -109,12 +111,12 @@ const log = (message) => {
 };
 
 const showGameStatus = () => {
-    log(`----------------------------------`);
-    log(`👀 Votre main actuelle est : ${player_cards}`);
-    log(`Total de cartes : ${getSumOfCards(player_cards)}`);
+    log("-------------------------------");
+    log(`👀 Votre main actuelle : ${player_cards.join(', ')}`);
+    log(`💡 Total de vos cartes : ${getSumOfCards(player_cards)}`);
     log('\n');
-    log(`👀 Total de cartes du croupier : ${getSumOfCards(computer_cards)}`);
-    log(`---------------------------------`);
+    log(`👀 Total des cartes du croupier : ${getSumOfCards(computer_cards)}`);
+    log("-------------------------------");
 };
 
 const pickCard = () => {
@@ -123,7 +125,6 @@ const pickCard = () => {
     return card;
 };
 
-/* The `startGame()` function is called to begin the game of Blackjack. It initializes the game
-variables, distributes the initial cards to the player and the computer, and then proceeds with the
-game logic. */
+/* La fonction `startGame()` est appelée pour commencer la partie de Blackjack. Elle initialise les variables du jeu,
+distribue les cartes initiales au joueur et au croupier, puis continue avec la logique du jeu. */
 startGame();
