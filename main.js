@@ -11,9 +11,10 @@ let actual_player;
 let player_cards = [];
 let computer_cards = [];
 
-const player_name = prompt("Bienvenue dans le jeu du Blackjack !! Quel est votre nom?");
+let player_name;
 
 const startGame = () => {
+    prompt("Bienvenue dans le jeu du Blackjack ! Quel est votre nom?");
     actual_player = player_name;
     // Première distribution de cartes
     player_cards.push(pickCard());
@@ -127,4 +128,9 @@ const pickCard = () => {
 
 /* La fonction `startGame()` est appelée pour commencer la partie de Blackjack. Elle initialise les variables du jeu,
 distribue les cartes initiales au joueur et au croupier, puis continue avec la logique du jeu. */
-startGame();
+// startGame();
+const play_button = document.getElementById('play-button');
+
+play_button.addEventListener('click', () => {
+    startGame();
+});
