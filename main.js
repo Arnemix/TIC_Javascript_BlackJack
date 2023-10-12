@@ -133,9 +133,12 @@ distribue les cartes initiales au joueur et au croupier, puis continue avec la l
 const play_button = document.getElementById('play-button');
 
 play_button.addEventListener('click', () => {
-    if(!game_is_running){
-        startGame();
-    }else{
+    if(play_button.id == "replay-button"){
         location.reload();
     }
+    if(!game_is_running){
+        play_button.id = "replay-button";
+        startGame();
+    }
+    
 });
