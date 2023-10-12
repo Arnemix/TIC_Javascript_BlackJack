@@ -53,6 +53,7 @@ const startGame = () => {
                 showGameStatus();
                 if (getSumOfCards(player_cards) > 21) {
                     winner = "croupier";
+                    log(`❌ Vous avez dépasser 21 en piochant une carte !`)
                     showWinMessage();
                     break;
                 }
@@ -61,6 +62,7 @@ const startGame = () => {
 
         if (getSumOfCards(computer_cards) > 21) {
             winner = player_name;
+            log(`❌ Le croupier a dépassé 21 en piochant une carte !`)
             showWinMessage();
         } else if (getSumOfCards(player_cards) < 21) {
             while (getSumOfCards(computer_cards) <= 17 && getSumOfCards(computer_cards) <= getSumOfCards(player_cards)) {
@@ -75,12 +77,15 @@ const startGame = () => {
 
             if (getSumOfCards(computer_cards) > 21) {
                 winner = player_name;
+                log(`❌ Le croupier a dépassé 21 en piochant une carte !`)
                 showWinMessage();
             } else if (getSumOfCards(computer_cards) > getSumOfCards(player_cards)) {
                 winner = "croupier";
+                log(`❌ Le croupier a une meilleure main que vous !`)
                 showWinMessage();
             } else if (getSumOfCards(computer_cards) >= 17) {
                 winner = player_name;
+                log(`🏳 Le croupier déclare forfait`)
                 showWinMessage();
             }
         }
