@@ -1,18 +1,21 @@
 let card_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10,];
 
+// Fonction pour shuffle les cartes
 function shuffle(inputArray){
     inputArray.sort(()=> Math.random() - 0.5);
 }
 
 shuffle(card_list);
+
+//On initialise les variables necessaires au bon fonctionnement du jeu
 let winner = "";
 let game_is_running = false;
 let actual_player;
 let player_cards = [];
 let computer_cards = [];
-
 let player_name;
 
+// Cette fonction permet de lancer la partie et de la continuer tant que game_is_running est true == true
 const startGame = () => {
     shuffle(card_list);
     player_name = prompt("Bienvenue dans le jeu du Blackjack ! Quel est votre nom?");
@@ -93,6 +96,8 @@ const startGame = () => {
     }
 };
 
+// Cette fonction permet de récupérer la somme des cartes d'un paquet
+
 const getSumOfCards = (cards) => {
     let sum = 0;
     for (let i = 0; i < cards.length; i++) {
@@ -101,6 +106,7 @@ const getSumOfCards = (cards) => {
     return sum;
 };
 
+// Cette fonction permet d'afficher le message de victoire avec des petites statistiques
 const showWinMessage = () => {
     log("🏆 Résultat de la partie :");
     game_is_running = false;
@@ -114,9 +120,13 @@ const showWinMessage = () => {
     log("🎉 Fin de la partie de Blackjack. Merci d'avoir joué !");
 };
 
+// fonction log pour afficher des logs plus facilement
 const log = (message) => {
     console.log(message);
 };
+
+// cette fonction affiche le paquet du joueur ainsi que le total des cartes du croupier 
+// (via getSumOfCards(computer_cards))
 
 const showGameStatus = () => {
     log("-------------------------------");
@@ -127,6 +137,7 @@ const showGameStatus = () => {
     log("-------------------------------");
 };
 
+// Cette fonction permet de return une carte aléatoirement
 const pickCard = () => {
     let random = Math.floor(Math.random() * card_list.length);
     let card = card_list[random];
@@ -138,6 +149,8 @@ distribue les cartes initiales au joueur et au croupier, puis continue avec la l
 // startGame();
 const play_button = document.getElementById('play-button');
 
+
+// Cet event permet de lancer la partie lorsque l'utilisateur clique sur le bouton 'Jouer !'
 play_button.addEventListener('click', () => {
     if(play_button.id == "replay-button"){
         location.reload();
