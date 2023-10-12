@@ -1,10 +1,10 @@
-let card_list = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10,
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10,
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10,
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10,
-];
+let card_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10,];
 
+function shuffle(inputArray){
+    inputArray.sort(()=> Math.random() - 0.5);
+}
+
+shuffle(card_list);
 let winner = "";
 let game_is_running = false;
 let actual_player;
@@ -14,6 +14,7 @@ let computer_cards = [];
 let player_name;
 
 const startGame = () => {
+    shuffle(card_list);
     player_name = prompt("Bienvenue dans le jeu du Blackjack ! Quel est votre nom?");
     game_is_running = true;
     actual_player = player_name;
